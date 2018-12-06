@@ -6,12 +6,11 @@ set_global_assignment -name FAMILY "Cyclone V"
 set_global_assignment -name DEVICE 5CSXFC6D6F31C6
 set_global_assignment -name TOP_LEVEL_ENTITY "DigiCReceiver"
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "16.0.2"
-set_global_assignment -name LAST_QUARTUS_VERSION "16.0.2"
+set_global_assignment -name LAST_QUARTUS_VERSION "18.0.0 Lite Edition"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "21:41:13 DECEMBER 06,2018"
 set_global_assignment -name DEVICE_FILTER_PACKAGE FBGA
 set_global_assignment -name DEVICE_FILTER_PIN_COUNT 896
 set_global_assignment -name DEVICE_FILTER_SPEED_GRADE 6
-set_global_assignment -name SDC_FILE DigiCReceiver.SDC
 
 #============================================================
 # CLOCK
@@ -707,3 +706,15 @@ set_location_assignment PIN_AA26 -to XT_IN_P
 # End of pin assignments by Terasic System Builder
 #============================================================
 
+
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name SDC_FILE DigiCReceiver.sdc
+set_global_assignment -name VERILOG_FILE DigiCReceiver.v
+set_global_assignment -name SDC_FILE DigiCReceiver.SDC
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

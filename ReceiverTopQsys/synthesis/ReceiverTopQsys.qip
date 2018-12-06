@@ -1,0 +1,26 @@
+set_global_assignment -entity "ReceiverTopQsys" -library "ReceiverTopQsys" -name IP_TOOL_NAME "Qsys"
+set_global_assignment -entity "ReceiverTopQsys" -library "ReceiverTopQsys" -name IP_TOOL_VERSION "18.0"
+set_global_assignment -entity "ReceiverTopQsys" -library "ReceiverTopQsys" -name IP_TOOL_ENV "Qsys"
+set_global_assignment -library "ReceiverTopQsys" -name SOPCINFO_FILE [file join $::quartus(qip_path) "../../ReceiverTopQsys.sopcinfo"]
+set_global_assignment -entity "ReceiverTopQsys" -library "ReceiverTopQsys" -name SLD_INFO "QSYS_NAME ReceiverTopQsys HAS_SOPCINFO 1 GENERATION_ID 1544105272"
+set_global_assignment -library "ReceiverTopQsys" -name MISC_FILE [file join $::quartus(qip_path) "../ReceiverTopQsys.cmp"]
+set_global_assignment -library "ReceiverTopQsys" -name SLD_FILE [file join $::quartus(qip_path) "ReceiverTopQsys.debuginfo"]
+set_global_assignment -entity "ReceiverTopQsys" -library "ReceiverTopQsys" -name IP_TARGETED_DEVICE_FAMILY "Cyclone V"
+set_global_assignment -entity "ReceiverTopQsys" -library "ReceiverTopQsys" -name IP_GENERATED_DEVICE_FAMILY "{Cyclone V}"
+set_global_assignment -entity "ReceiverTopQsys" -library "ReceiverTopQsys" -name IP_QSYS_MODE "SYSTEM"
+set_global_assignment -name SYNTHESIS_ONLY_QIP ON
+set_global_assignment -library "ReceiverTopQsys" -name MISC_FILE [file join $::quartus(qip_path) "../../ReceiverTopQsys.qsys"]
+set_global_assignment -entity "ReceiverTopQsys" -library "ReceiverTopQsys" -name IP_COMPONENT_NAME "UmVjZWl2ZXJUb3BRc3lz"
+set_global_assignment -entity "ReceiverTopQsys" -library "ReceiverTopQsys" -name IP_COMPONENT_DISPLAY_NAME "UmVjZWl2ZXJUb3BRc3lz"
+set_global_assignment -entity "ReceiverTopQsys" -library "ReceiverTopQsys" -name IP_COMPONENT_REPORT_HIERARCHY "On"
+set_global_assignment -entity "ReceiverTopQsys" -library "ReceiverTopQsys" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "ReceiverTopQsys" -library "ReceiverTopQsys" -name IP_COMPONENT_VERSION "MS4w"
+set_global_assignment -entity "ReceiverTopQsys" -library "ReceiverTopQsys" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTU0NDEwNTI3Mg==::QXV0byBHRU5FUkFUSU9OX0lE"
+set_global_assignment -entity "ReceiverTopQsys" -library "ReceiverTopQsys" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::Q3ljbG9uZSBW::QXV0byBERVZJQ0VfRkFNSUxZ"
+set_global_assignment -entity "ReceiverTopQsys" -library "ReceiverTopQsys" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0U=::NUNTWEZDNkQ2RjMxQzY=::QXV0byBERVZJQ0U="
+set_global_assignment -entity "ReceiverTopQsys" -library "ReceiverTopQsys" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfU1BFRURHUkFERQ==::Nl9INg==::QXV0byBERVZJQ0VfU1BFRURHUkFERQ=="
+set_global_assignment -entity "ReceiverTopQsys" -library "ReceiverTopQsys" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfQ0xPQ0tfUkFURQ==::LTE=::QXV0byBDTE9DS19SQVRF"
+set_global_assignment -entity "ReceiverTopQsys" -library "ReceiverTopQsys" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfQ0xPQ0tfRE9NQUlO::LTE=::QXV0byBDTE9DS19ET01BSU4="
+set_global_assignment -entity "ReceiverTopQsys" -library "ReceiverTopQsys" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfUkVTRVRfRE9NQUlO::LTE=::QXV0byBSRVNFVF9ET01BSU4="
+
+set_global_assignment -library "ReceiverTopQsys" -name VERILOG_FILE [file join $::quartus(qip_path) "ReceiverTopQsys.v"]
