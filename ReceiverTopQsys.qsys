@@ -81,7 +81,7 @@
       }
       datum sopceditor_expanded
       {
-         value = "1";
+         value = "0";
          type = "boolean";
       }
    }
@@ -279,6 +279,9 @@
  <interface
    name="ofdm_channel_equalization_0_aso_out0"
    internal="OFDMChannelEqualization.aso_out01" />
+ <interface
+   name="ofdmadccontrol_buffered_data"
+   internal="OFDMADCControl.buffered_data" />
  <interface name="reset" internal="clk_0.clk_in_reset" type="reset" dir="end" />
  <module
    name="AvalonFIFO"
@@ -1126,7 +1129,7 @@
  <connection
    kind="avalon"
    version="16.1"
-   start="hps_0.h2f_axi_master"
+   start="hps_0.h2f_lw_axi_master"
    end="MMBridge.s0">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0000" />

@@ -1,5 +1,8 @@
 	ReceiverTopQsys u0 (
 		.clk_clk                           (<connected-to-clk_clk>),                           //                       clk.clk
+		.hps_0_f2h_cold_reset_req_reset_n  (<connected-to-hps_0_f2h_cold_reset_req_reset_n>),  //  hps_0_f2h_cold_reset_req.reset_n
+		.hps_0_f2h_debug_reset_req_reset_n (<connected-to-hps_0_f2h_debug_reset_req_reset_n>), // hps_0_f2h_debug_reset_req.reset_n
+		.hps_0_f2h_warm_reset_req_reset_n  (<connected-to-hps_0_f2h_warm_reset_req_reset_n>),  //  hps_0_f2h_warm_reset_req.reset_n
 		.memory_mem_a                      (<connected-to-memory_mem_a>),                      //                    memory.mem_a
 		.memory_mem_ba                     (<connected-to-memory_mem_ba>),                     //                          .mem_ba
 		.memory_mem_ck                     (<connected-to-memory_mem_ck>),                     //                          .mem_ck
@@ -16,9 +19,6 @@
 		.memory_mem_odt                    (<connected-to-memory_mem_odt>),                    //                          .mem_odt
 		.memory_mem_dm                     (<connected-to-memory_mem_dm>),                     //                          .mem_dm
 		.memory_oct_rzqin                  (<connected-to-memory_oct_rzqin>),                  //                          .oct_rzqin
-		.reset_reset_n                     (<connected-to-reset_reset_n>),                     //                     reset.reset_n
-		.hps_0_f2h_cold_reset_req_reset_n  (<connected-to-hps_0_f2h_cold_reset_req_reset_n>),  //  hps_0_f2h_cold_reset_req.reset_n
-		.hps_0_f2h_debug_reset_req_reset_n (<connected-to-hps_0_f2h_debug_reset_req_reset_n>), // hps_0_f2h_debug_reset_req.reset_n
-		.hps_0_f2h_warm_reset_req_reset_n  (<connected-to-hps_0_f2h_warm_reset_req_reset_n>)   //  hps_0_f2h_warm_reset_req.reset_n
+		.reset_reset_n                     (<connected-to-reset_reset_n>)                      //                     reset.reset_n
 	);
 
