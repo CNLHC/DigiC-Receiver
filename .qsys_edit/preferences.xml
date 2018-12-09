@@ -3,13 +3,13 @@
  <debug showDebugMenu="0" />
  <systemtable filter="All Interfaces">
   <columns>
-   <connections preferredWidth="255" />
+   <connections preferredWidth="271" />
    <irq preferredWidth="34" />
    <name preferredWidth="252" />
    <description preferredWidth="416" />
   </columns>
  </systemtable>
  <library
-   expandedCategories="Library,Library/Qsys Interconnect/Memory-Mapped Alpha,Library/University Program,Library/Qsys Interconnect/Memory-Mapped,Project/DigiC,Project/DigiC/OFDM,Library/University Program/Audio &amp; Video,Library/University Program/Audio &amp; Video/Video,Library/Basic Functions/On Chip Memory,Library/Basic Functions,Library/Qsys Interconnect,Project" />
+   expandedCategories="Library/Interface Protocols/Transceiver PHY,Library/DSP,Library/Processors and Peripherals/Hard Processor Components,Library/Processors and Peripherals/Co-Processors,Project/DigiC/OFDM,Library/Interface Protocols,Library/Memory Interfaces and Controllers/SDRAM,Library/Processors and Peripherals/Peripherals,Library/Interface Protocols/PCI Express/Example Design Components,Library/Processors and Peripherals/Co-Processors/Nios II Custom Instructions,Library/Interface Protocols/Serial,Library/Memory Interfaces and Controllers,Library/DSP/Primitive DSP,Project/DigiC,Library/Qsys Interconnect/Tri-State Components,Project,Library/Interface Protocols/SerialLite,Library,Library/Processors and Peripherals,Library/University Program/Audio &amp; Video/Video,Library/University Program,Library/University Program/Clock,Library/Processors and Peripherals/Hard Processor Systems,Library/Qsys Interconnect,Library/DSP/Video and Image Processing,Library/Qsys Interconnect/Memory-Mapped,Library/University Program/Audio &amp; Video,Library/Qsys Interconnect/Memory-Mapped Alpha,Library/Interface Protocols/PCI Express/QSYS Example Designs,Library/Interface Protocols/PCI Express" />
  <window width="2578" height="1420" x="-9" y="-9" />
 </preferences>
