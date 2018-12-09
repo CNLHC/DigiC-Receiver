@@ -17,10 +17,13 @@ module ReceiverTopQsys (
 	memory_mem_odt,
 	memory_mem_dm,
 	memory_oct_rzqin,
-	reset_reset_n);	
+	reset_reset_n,
+	hps_0_f2h_cold_reset_req_reset_n,
+	hps_0_f2h_debug_reset_req_reset_n,
+	hps_0_f2h_warm_reset_req_reset_n);	
 
 	input		clk_clk;
-	output	[12:0]	memory_mem_a;
+	output	[14:0]	memory_mem_a;
 	output	[2:0]	memory_mem_ba;
 	output		memory_mem_ck;
 	output		memory_mem_ck_n;
@@ -30,11 +33,14 @@ module ReceiverTopQsys (
 	output		memory_mem_cas_n;
 	output		memory_mem_we_n;
 	output		memory_mem_reset_n;
-	inout	[7:0]	memory_mem_dq;
-	inout		memory_mem_dqs;
-	inout		memory_mem_dqs_n;
+	inout	[31:0]	memory_mem_dq;
+	inout	[3:0]	memory_mem_dqs;
+	inout	[3:0]	memory_mem_dqs_n;
 	output		memory_mem_odt;
-	output		memory_mem_dm;
+	output	[3:0]	memory_mem_dm;
 	input		memory_oct_rzqin;
 	input		reset_reset_n;
+	input		hps_0_f2h_cold_reset_req_reset_n;
+	input		hps_0_f2h_debug_reset_req_reset_n;
+	input		hps_0_f2h_warm_reset_req_reset_n;
 endmodule
