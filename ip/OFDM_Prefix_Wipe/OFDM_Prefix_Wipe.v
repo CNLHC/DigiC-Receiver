@@ -42,7 +42,7 @@ module OFDM_Prefix_Wipe (
                         aso_out0_startofpacket<=0;
                     if(asi_in0_valid)begin
                         tBitsCounter<=tBitsCounter+32;
-                        if (tBitsCounter>=128)begin
+                        if (tBitsCounter>=256)begin
                             if(!tPacketState)begin
                                 aso_out0_startofpacket<=1;
                                 tPacketState<=1;
