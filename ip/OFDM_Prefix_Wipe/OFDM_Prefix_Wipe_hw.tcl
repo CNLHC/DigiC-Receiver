@@ -126,6 +126,6 @@ set_interface_property aso_out0_1 SVD_ADDRESS_GROUP ""
 add_interface_port aso_out0_1 aso_out0_data data Output 33
 add_interface_port aso_out0_1 aso_out0_ready ready Input 1
 add_interface_port aso_out0_1 aso_out0_valid valid Output 1
-add_interface_port aso_out0_1 aso_out0_1_startofpacket startofpacket Output 1
-add_interface_port aso_out0_1 aso_out0_1_endofpacket endofpacket Output 1
+add_interface_port aso_out0_1 aso_out0_startofpacket startofpacket Output 1
+add_interface_port aso_out0_1 aso_out0_endofpacket endofpacket Output 1
 
