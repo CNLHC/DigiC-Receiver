@@ -128,9 +128,9 @@ set_interface_property asi_in_0 SVD_ADDRESS_GROUP ""
 add_interface_port asi_in_0 asi_in0_data data Input 32
 add_interface_port asi_in_0 asi_in0_ready ready Output 1
 add_interface_port asi_in_0 asi_in0_valid valid Input 1
-add_interface_port asi_in_0 asi_in_0_endofpacket endofpacket Input 1
-add_interface_port asi_in_0 asi_in_0_startofpacket startofpacket Input 1
-add_interface_port asi_in_0 asi_in_0_empty empty Input 1
+add_interface_port asi_in_0 asi_in0_endofpacket endofpacket Input 1
+add_interface_port asi_in_0 asi_in0_startofpacket startofpacket Input 1
+add_interface_port asi_in_0 asi_in0_empty empty Input 1
 
 
 # 
@@ -145,3 +145,16 @@ set_interface_property reset_sink PORT_NAME_MAP ""
 set_interface_property reset_sink CMSIS_SVD_VARIABLES ""
 set_interface_property reset_sink SVD_ADDRESS_GROUP ""
 
+# 
+# connection point sample_control
+# 
+add_interface sample_control conduit end
+set_interface_property sample_control associatedClock ""
+set_interface_property sample_control associatedReset ""
+set_interface_property sample_control ENABLED true
+set_interface_property sample_control EXPORT_OF ""
+set_interface_property sample_control PORT_NAME_MAP ""
+set_interface_property sample_control CMSIS_SVD_VARIABLES ""
+set_interface_property sample_control SVD_ADDRESS_GROUP ""
+
+add_interface_port sample_control pre_sampling  pre_sample_control Output 1

@@ -20,7 +20,8 @@ module ReceiverTopQsys (
 	memory_mem_odt,
 	memory_mem_dm,
 	memory_oct_rzqin,
-	reset_reset_n);	
+	reset_reset_n,
+	ofdmadccontrol_external_adc_data);	
 
 	input		clk_clk;
 	input		hps_0_f2h_cold_reset_req_reset_n;
@@ -43,4 +44,5 @@ module ReceiverTopQsys (
 	output	[3:0]	memory_mem_dm;
 	input		memory_oct_rzqin;
 	input		reset_reset_n;
+	input	[13:0]	ofdmadccontrol_external_adc_data;
 endmodule

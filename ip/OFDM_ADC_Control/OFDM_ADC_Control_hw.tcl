@@ -107,6 +107,20 @@ add_interface_port clock_1 sampling_clk clk Input 1
 
 
 # 
+# connection point sample_control
+# 
+add_interface sample_control conduit end
+set_interface_property sample_control associatedClock ""
+set_interface_property sample_control associatedReset ""
+set_interface_property sample_control ENABLED true
+set_interface_property sample_control EXPORT_OF ""
+set_interface_property sample_control PORT_NAME_MAP ""
+set_interface_property sample_control CMSIS_SVD_VARIABLES ""
+set_interface_property sample_control SVD_ADDRESS_GROUP ""
+
+add_interface_port sample_control pre_sampling  pre_sample_control Input 1
+
+# 
 # connection point external_adc
 # 
 add_interface external_adc conduit end
@@ -118,6 +132,4 @@ set_interface_property external_adc PORT_NAME_MAP ""
 set_interface_property external_adc CMSIS_SVD_VARIABLES ""
 set_interface_property external_adc SVD_ADDRESS_GROUP ""
 
-add_interface_port external_adc buffered_data data Input 14
-add_interface_port external_adc pre_sampling sample_control Input 1
-
+add_interface_port external_adc adc_data data Input 14

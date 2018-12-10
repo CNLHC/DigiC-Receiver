@@ -2,14 +2,14 @@
 # 
 preplace inst ReceiverTopQsys.hps_0.i2c0 -pg 1
 preplace inst ReceiverTopQsys.hps_0.clk_0 -pg 1
-preplace inst ReceiverTopQsys.PLLSampleClock -pg 1 -lvl 7 -y 210
-preplace inst ReceiverTopQsys.OFDMPrefixWipeer -pg 1 -lvl 7 -y 510
+preplace inst ReceiverTopQsys.PLLSampleClock -pg 1 -lvl 7 -y 230
+preplace inst ReceiverTopQsys.OFDMPrefixWipeer -pg 1 -lvl 7 -y 530
 preplace inst ReceiverTopQsys.hps_0.axi_sdram -pg 1
 preplace inst ReceiverTopQsys.hps_0.axi_ocram -pg 1
 preplace inst ReceiverTopQsys.hps_0.spim0 -pg 1
 preplace inst ReceiverTopQsys.hps_0.i2c1 -pg 1
 preplace inst ReceiverTopQsys.hps_0.arm_a9_0 -pg 1
-preplace inst ReceiverTopQsys.OFDMChannelEqualization -pg 1 -lvl 6 -y 610
+preplace inst ReceiverTopQsys.OFDMChannelEqualization -pg 1 -lvl 6 -y 570
 preplace inst ReceiverTopQsys.hps_0.scu -pg 1
 preplace inst ReceiverTopQsys.hps_0.spim1 -pg 1
 preplace inst ReceiverTopQsys.hps_0.i2c2 -pg 1
@@ -17,15 +17,15 @@ preplace inst ReceiverTopQsys.hps_0.dma -pg 1
 preplace inst ReceiverTopQsys.hps_0.arm_gic_0 -pg 1
 preplace inst ReceiverTopQsys.hps_0.arm_a9_1 -pg 1
 preplace inst ReceiverTopQsys.hps_0.hps_io.border -pg 1
-preplace inst ReceiverTopQsys.OFDMSymbolSync -pg 1 -lvl 6 -y 510
-preplace inst ReceiverTopQsys.MMBridge -pg 1 -lvl 7 -y 630
+preplace inst ReceiverTopQsys.OFDMSymbolSync -pg 1 -lvl 6 -y 450
+preplace inst ReceiverTopQsys.MMBridge -pg 1 -lvl 7 -y 650
 preplace inst ReceiverTopQsys.hps_0.i2c3 -pg 1
 preplace inst ReceiverTopQsys.hps_0.wd_timer0 -pg 1
 preplace inst ReceiverTopQsys.hps_0.L2 -pg 1
-preplace inst ReceiverTopQsys.dc_fifo_0 -pg 1 -lvl 5 -y 120
-preplace inst ReceiverTopQsys.OFDMADCControl -pg 1 -lvl 8 -y 290
-preplace inst ReceiverTopQsys.IFFT -pg 1 -lvl 8 -y 490
-preplace inst ReceiverTopQsys.AvalonFIFO -pg 1 -lvl 10 -y 380
+preplace inst ReceiverTopQsys.dc_fifo_0 -pg 1 -lvl 5 -y 140
+preplace inst ReceiverTopQsys.OFDMADCControl -pg 1 -lvl 8 -y 330
+preplace inst ReceiverTopQsys.IFFT -pg 1 -lvl 8 -y 510
+preplace inst ReceiverTopQsys.AvalonFIFO -pg 1 -lvl 10 -y 400
 preplace inst ReceiverTopQsys -pg 1 -lvl 1 -y 40 -regy -20
 preplace inst ReceiverTopQsys.hps_0.usb0 -pg 1
 preplace inst ReceiverTopQsys.hps_0.wd_timer1 -pg 1
@@ -52,35 +52,37 @@ preplace inst ReceiverTopQsys.hps_0.sdmmc -pg 1
 preplace inst ReceiverTopQsys.hps_0.timer2 -pg 1
 preplace inst ReceiverTopQsys.hps_0.uart0 -pg 1
 preplace inst ReceiverTopQsys.hps_0.fpga_interfaces -pg 1
-preplace inst ReceiverTopQsys.clk_0 -pg 1 -lvl 1 -y 390
+preplace inst ReceiverTopQsys.clk_0 -pg 1 -lvl 1 -y 410
 preplace inst ReceiverTopQsys.hps_0.gmac1 -pg 1
 preplace inst ReceiverTopQsys.hps_0.timer3 -pg 1
 preplace inst ReceiverTopQsys.hps_0.uart1 -pg 1
 preplace inst ReceiverTopQsys.hps_0.rstmgr -pg 1
 preplace inst ReceiverTopQsys.hps_0.sysmgr -pg 1
-preplace inst ReceiverTopQsys.QAMDemodulation -pg 1 -lvl 9 -y 430
+preplace inst ReceiverTopQsys.QAMDemodulation -pg 1 -lvl 9 -y 450
 preplace inst ReceiverTopQsys.hps_0.timer -pg 1
 preplace inst ReceiverTopQsys.hps_0.nand0 -pg 1
 preplace inst ReceiverTopQsys.hps_0.clkmgr -pg 1
-preplace inst ReceiverTopQsys.hps_0 -pg 1 -lvl 6 -y 70
-preplace netloc POINT_TO_POINT<net_container>ReceiverTopQsys</net_container>(SLAVE)AvalonFIFO.in,(MASTER)QAMDemodulation.aso_out0) 1 9 1 2720
-preplace netloc FAN_OUT<net_container>ReceiverTopQsys</net_container>(MASTER)PLLSampleClock.outclk0,(SLAVE)OFDMADCControl.clock_1,(SLAVE)dc_fifo_0.in_clk) 1 4 4 1190 440 NJ 440 NJ 360 2240
-preplace netloc POINT_TO_POINT<net_container>ReceiverTopQsys</net_container>(MASTER)OFDMADCControl.aso_out0,(SLAVE)dc_fifo_0.in) 1 4 5 1190 110 NJ 360 NJ 200 NJ 200 2520
-preplace netloc POINT_TO_POINT<net_container>ReceiverTopQsys</net_container>(SLAVE)OFDMPrefixWipeer.asi_in0,(MASTER)OFDMSymbolSync.aso_out0) 1 6 1 N
-preplace netloc POINT_TO_POINT<net_container>ReceiverTopQsys</net_container>(MASTER)MMBridge.m0,(SLAVE)AvalonFIFO.out) 1 7 3 NJ 660 NJ 660 2740
-preplace netloc EXPORT<net_container>ReceiverTopQsys</net_container>(SLAVE)clk_0.clk_in_reset,(SLAVE)ReceiverTopQsys.reset) 1 0 1 NJ
-preplace netloc EXPORT<net_container>ReceiverTopQsys</net_container>(SLAVE)ReceiverTopQsys.memory,(SLAVE)hps_0.memory) 1 0 6 NJ 360 NJ 480 NJ 480 NJ 480 NJ 330 NJ
-preplace netloc POINT_TO_POINT<net_container>ReceiverTopQsys</net_container>(MASTER)OFDMPrefixWipeer.aso_out0_1,(SLAVE)IFFT.sink) 1 7 1 N
-preplace netloc POINT_TO_POINT<net_container>ReceiverTopQsys</net_container>(SLAVE)MMBridge.s0,(MASTER)hps_0.h2f_lw_axi_master) 1 6 1 1950
+preplace inst ReceiverTopQsys.hps_0 -pg 1 -lvl 6 -y 90
+preplace netloc EXPORT<net_container>ReceiverTopQsys</net_container>(SLAVE)ReceiverTopQsys.memory,(SLAVE)hps_0.memory) 1 0 6 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ
+preplace netloc EXPORT<net_container>ReceiverTopQsys</net_container>(SLAVE)clk_0.clk_in,(SLAVE)ReceiverTopQsys.clk) 1 0 1 NJ
 preplace netloc EXPORT<net_container>ReceiverTopQsys</net_container>(SLAVE)hps_0.f2h_cold_reset_req,(SLAVE)ReceiverTopQsys.hps_0_f2h_cold_reset_req) 1 0 6 NJ 70 NJ 70 NJ 70 NJ 70 NJ 70 NJ
-preplace netloc EXPORT<net_container>ReceiverTopQsys</net_container>(SLAVE)ReceiverTopQsys.clk,(SLAVE)clk_0.clk_in) 1 0 1 NJ
-preplace netloc POINT_TO_POINT<net_container>ReceiverTopQsys</net_container>(SLAVE)OFDMChannelEqualization.asi_in0,(MASTER)IFFT.source) 1 5 4 1600 600 NJ 600 NJ 580 2480
-preplace netloc POINT_TO_POINT<net_container>ReceiverTopQsys</net_container>(MASTER)OFDMChannelEqualization.aso_out0,(SLAVE)QAMDemodulation.asi_in0) 1 6 3 NJ 620 NJ 600 2520
-preplace netloc FAN_OUT<net_container>ReceiverTopQsys</net_container>(MASTER)OFDMSymbolSync.reset_source,(SLAVE)PLLSampleClock.reset,(SLAVE)dc_fifo_0.in_clk_reset) 1 4 3 1110 30 NJ 30 1990
-preplace netloc FAN_OUT<net_container>ReceiverTopQsys</net_container>(SLAVE)OFDMPrefixWipeer.reset,(SLAVE)OFDMChannelEqualization.reset,(MASTER)clk_0.clk_reset,(SLAVE)MMBridge.reset,(SLAVE)OFDMSymbolSync.reset_sink,(SLAVE)dc_fifo_0.out_clk_reset,(SLAVE)OFDMADCControl.reset,(SLAVE)IFFT.rst,(SLAVE)QAMDemodulation.reset,(SLAVE)AvalonFIFO.reset_in) 1 1 9 NJ 420 NJ 420 NJ 420 1130 270 1480 480 2010 500 2260 480 2500 540 2760
-preplace netloc EXPORT<net_container>ReceiverTopQsys</net_container>(SLAVE)ReceiverTopQsys.hps_0_f2h_warm_reset_req,(SLAVE)hps_0.f2h_warm_reset_req) 1 0 6 NJ 340 NJ 460 NJ 460 NJ 460 NJ 290 NJ
-preplace netloc FAN_OUT<net_container>ReceiverTopQsys</net_container>(SLAVE)hps_0.f2h_sdram0_clock,(SLAVE)QAMDemodulation.clock,(SLAVE)OFDMSymbolSync.clock,(SLAVE)IFFT.clk,(SLAVE)OFDMPrefixWipeer.clock,(SLAVE)PLLSampleClock.refclk,(SLAVE)AvalonFIFO.clk_in,(SLAVE)hps_0.h2f_axi_clock,(SLAVE)OFDMChannelEqualization.clock,(SLAVE)dc_fifo_0.out_clk,(SLAVE)hps_0.f2h_axi_clock,(SLAVE)MMBridge.clk,(SLAVE)hps_0.h2f_lw_axi_clock,(MASTER)clk_0.clk) 1 1 9 NJ 400 NJ 400 NJ 400 1110 250 1580 500 2050 480 2240 460 2540 520 2700
-preplace netloc EXPORT<net_container>ReceiverTopQsys</net_container>(SLAVE)ReceiverTopQsys.hps_0_f2h_debug_reset_req,(SLAVE)hps_0.f2h_debug_reset_req) 1 0 6 NJ 90 NJ 90 NJ 90 NJ 90 NJ 90 NJ
-preplace netloc POINT_TO_POINT<net_container>ReceiverTopQsys</net_container>(SLAVE)OFDMSymbolSync.asi_in_0,(MASTER)dc_fifo_0.out) 1 5 1 1500
-levelinfo -pg 1 0 170 2900
-levelinfo -hier ReceiverTopQsys 180 210 560 860 1090 1340 1760 2100 2310 2570 2790 2890
+preplace netloc POINT_TO_POINT<net_container>ReceiverTopQsys</net_container>(SLAVE)AvalonFIFO.out,(MASTER)MMBridge.m0) 1 7 3 NJ 500 NJ 560 2790
+preplace netloc FAN_OUT<net_container>ReceiverTopQsys</net_container>(SLAVE)dc_fifo_0.in_clk_reset,(SLAVE)PLLSampleClock.reset,(MASTER)OFDMSymbolSync.reset_source) 1 4 3 1120 30 NJ 30 1960
+preplace netloc EXPORT<net_container>ReceiverTopQsys</net_container>(SLAVE)hps_0.f2h_warm_reset_req,(SLAVE)ReceiverTopQsys.hps_0_f2h_warm_reset_req) 1 0 6 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ
+preplace netloc POINT_TO_POINT<net_container>ReceiverTopQsys</net_container>(SLAVE)OFDMADCControl.sample_control,(SLAVE)OFDMSymbolSync.sample_control) 1 5 3 1570 400 NJ 400 NJ
+preplace netloc POINT_TO_POINT<net_container>ReceiverTopQsys</net_container>(MASTER)hps_0.h2f_lw_axi_master,(SLAVE)MMBridge.s0) 1 6 1 2020
+preplace netloc POINT_TO_POINT<net_container>ReceiverTopQsys</net_container>(MASTER)QAMDemodulation.aso_out0,(SLAVE)AvalonFIFO.in) 1 9 1 2770
+preplace netloc POINT_TO_POINT<net_container>ReceiverTopQsys</net_container>(SLAVE)dc_fifo_0.in,(MASTER)OFDMADCControl.aso_out0) 1 4 5 1160 50 NJ 50 NJ 180 NJ 180 2590
+preplace netloc FAN_OUT<net_container>ReceiverTopQsys</net_container>(SLAVE)hps_0.f2h_axi_clock,(SLAVE)hps_0.h2f_axi_clock,(SLAVE)hps_0.f2h_sdram0_clock,(SLAVE)dc_fifo_0.out_clk,(SLAVE)MMBridge.clk,(SLAVE)IFFT.clk,(SLAVE)QAMDemodulation.clock,(SLAVE)OFDMSymbolSync.clock,(SLAVE)AvalonFIFO.clk_in,(MASTER)clk_0.clk,(SLAVE)OFDMChannelEqualization.clock,(SLAVE)PLLSampleClock.refclk,(SLAVE)OFDMPrefixWipeer.clock,(SLAVE)hps_0.h2f_lw_axi_clock) 1 1 9 NJ 420 NJ 520 NJ 520 1120 370 1530 660 2080 480 2290 440 2590 440 2750
+preplace netloc EXPORT<net_container>ReceiverTopQsys</net_container>(SLAVE)OFDMADCControl.external_adc,(SLAVE)ReceiverTopQsys.ofdmadccontrol_external_adc) 1 0 8 NJ 350 NJ 350 NJ 350 NJ 350 NJ 350 NJ 380 NJ 360 NJ
+preplace netloc POINT_TO_POINT<net_container>ReceiverTopQsys</net_container>(MASTER)IFFT.source,(SLAVE)OFDMChannelEqualization.asi_in0) 1 5 4 1570 560 NJ 520 NJ 600 2530
+preplace netloc EXPORT<net_container>ReceiverTopQsys</net_container>(SLAVE)hps_0.f2h_debug_reset_req,(SLAVE)ReceiverTopQsys.hps_0_f2h_debug_reset_req) 1 0 6 NJ 90 NJ 90 NJ 90 NJ 90 NJ 90 NJ
+preplace netloc POINT_TO_POINT<net_container>ReceiverTopQsys</net_container>(SLAVE)QAMDemodulation.asi_in0,(MASTER)OFDMChannelEqualization.aso_out0) 1 6 3 NJ 460 NJ 460 NJ
+preplace netloc FAN_OUT<net_container>ReceiverTopQsys</net_container>(SLAVE)OFDMChannelEqualization.reset,(SLAVE)MMBridge.reset,(SLAVE)dc_fifo_0.out_clk_reset,(SLAVE)QAMDemodulation.reset,(SLAVE)OFDMSymbolSync.reset_sink,(SLAVE)AvalonFIFO.reset_in,(MASTER)clk_0.clk_reset,(SLAVE)IFFT.rst,(SLAVE)OFDMPrefixWipeer.reset,(SLAVE)OFDMADCControl.reset) 1 1 9 NJ 440 NJ 540 NJ 540 1140 540 1550 440 2000 500 2310 480 2570 540 2810
+preplace netloc EXPORT<net_container>ReceiverTopQsys</net_container>(SLAVE)clk_0.clk_in_reset,(SLAVE)ReceiverTopQsys.reset) 1 0 1 NJ
+preplace netloc POINT_TO_POINT<net_container>ReceiverTopQsys</net_container>(SLAVE)OFDMSymbolSync.asi_in_0,(MASTER)dc_fifo_0.out) 1 5 1 1510
+preplace netloc POINT_TO_POINT<net_container>ReceiverTopQsys</net_container>(SLAVE)IFFT.sink,(MASTER)OFDMPrefixWipeer.aso_out0_1) 1 7 1 N
+preplace netloc FAN_OUT<net_container>ReceiverTopQsys</net_container>(SLAVE)dc_fifo_0.in_clk,(MASTER)PLLSampleClock.outclk0,(SLAVE)OFDMADCControl.clock_1) 1 4 4 1160 390 NJ 420 NJ 220 2330
+preplace netloc POINT_TO_POINT<net_container>ReceiverTopQsys</net_container>(SLAVE)OFDMPrefixWipeer.asi_in0,(MASTER)OFDMSymbolSync.aso_out0) 1 6 1 1980
+levelinfo -pg 1 0 180 2950
+levelinfo -hier ReceiverTopQsys 190 220 570 870 1100 1350 1770 2130 2360 2620 2840 2940

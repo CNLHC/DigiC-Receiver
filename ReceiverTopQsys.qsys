@@ -81,7 +81,7 @@
       }
       datum sopceditor_expanded
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
    }
@@ -282,11 +282,16 @@
  <interface
    name="ofdmadccontrol_buffered_data"
    internal="OFDMADCControl.buffered_data" />
+ <interface
+   name="ofdmadccontrol_external_adc"
+   internal="OFDMADCControl.external_adc"
+   type="conduit"
+   dir="end" />
  <interface name="reset" internal="clk_0.clk_in_reset" type="reset" dir="end" />
  <module
    name="AvalonFIFO"
    kind="altera_avalon_fifo"
-   version="16.1"
+   version="18.0"
    enabled="1">
   <parameter name="avalonMMAvalonMMDataWidth" value="32" />
   <parameter name="avalonMMAvalonSTDataWidth" value="32" />
@@ -308,7 +313,7 @@
   <parameter name="useRegister" value="false" />
   <parameter name="useWriteControl" value="true" />
  </module>
- <module name="IFFT" kind="altera_fft_ii" version="16.1" enabled="1">
+ <module name="IFFT" kind="altera_fft_ii" version="18.0" enabled="1">
   <parameter name="data_flow" value="Streaming" />
   <parameter name="data_rep">Block Floating Point</parameter>
   <parameter name="design_env" value="QSYS" />
@@ -329,7 +334,7 @@
  <module
    name="MMBridge"
    kind="altera_avalon_mm_bridge"
-   version="16.1"
+   version="18.0"
    enabled="1">
   <parameter name="ADDRESS_UNITS" value="SYMBOLS" />
   <parameter name="ADDRESS_WIDTH" value="10" />
@@ -364,7 +369,7 @@
    kind="OFDM_Symbol_Sync"
    version="1.0"
    enabled="1" />
- <module name="PLLSampleClock" kind="altera_pll" version="16.1" enabled="1">
+ <module name="PLLSampleClock" kind="altera_pll" version="18.0" enabled="1">
   <parameter name="debug_print_output" value="false" />
   <parameter name="debug_use_rbc_taf_method" value="false" />
   <parameter name="device" value="5CSXFC6D6F31C6" />
@@ -572,7 +577,7 @@
    kind="QAM_Demodulation"
    version="1.0"
    enabled="1" />
- <module name="clk_0" kind="clock_source" version="16.1" enabled="1">
+ <module name="clk_0" kind="clock_source" version="18.0" enabled="1">
   <parameter name="clockFrequency" value="50000000" />
   <parameter name="clockFrequencyKnown" value="true" />
   <parameter name="inputClockFrequency" value="0" />
@@ -581,7 +586,7 @@
  <module
    name="dc_fifo_0"
    kind="altera_avalon_dc_fifo"
-   version="16.1"
+   version="18.0"
    enabled="1">
   <parameter name="BITS_PER_SYMBOL" value="8" />
   <parameter name="CHANNEL_WIDTH" value="0" />
@@ -596,7 +601,7 @@
   <parameter name="USE_PACKETS" value="1" />
   <parameter name="WR_SYNC_DEPTH" value="3" />
  </module>
- <module name="hps_0" kind="altera_hps" version="16.1" enabled="1">
+ <module name="hps_0" kind="altera_hps" version="18.0" enabled="1">
   <parameter name="ABSTRACT_REAL_COMPARE_TEST" value="false" />
   <parameter name="ABS_RAM_MEM_INIT_FILENAME" value="meminit" />
   <parameter name="ACV_PHY_CLK_ADD_FR_PHASE" value="0.0" />
@@ -1128,161 +1133,172 @@
  </module>
  <connection
    kind="avalon"
-   version="16.1"
+   version="18.0"
    start="hps_0.h2f_lw_axi_master"
    end="MMBridge.s0">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
- <connection kind="avalon" version="16.1" start="MMBridge.m0" end="AvalonFIFO.out">
+ <connection kind="avalon" version="18.0" start="MMBridge.m0" end="AvalonFIFO.out">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="avalon_streaming"
-   version="16.1"
+   version="18.0"
    start="OFDMSymbolSync.aso_out0"
    end="OFDMPrefixWipeer.asi_in0" />
  <connection
    kind="avalon_streaming"
-   version="16.1"
+   version="18.0"
    start="OFDMChannelEqualization.aso_out0"
    end="QAMDemodulation.asi_in0" />
  <connection
    kind="avalon_streaming"
-   version="16.1"
+   version="18.0"
    start="QAMDemodulation.aso_out0"
    end="AvalonFIFO.in" />
  <connection
    kind="avalon_streaming"
-   version="16.1"
+   version="18.0"
    start="OFDMADCControl.aso_out0"
    end="dc_fifo_0.in" />
  <connection
    kind="avalon_streaming"
-   version="16.1"
+   version="18.0"
    start="OFDMPrefixWipeer.aso_out0_1"
    end="IFFT.sink" />
  <connection
    kind="avalon_streaming"
-   version="16.1"
+   version="18.0"
    start="dc_fifo_0.out"
    end="OFDMSymbolSync.asi_in_0" />
  <connection
    kind="avalon_streaming"
-   version="16.1"
+   version="18.0"
    start="IFFT.source"
    end="OFDMChannelEqualization.asi_in0" />
- <connection kind="clock" version="16.1" start="clk_0.clk" end="IFFT.clk" />
- <connection kind="clock" version="16.1" start="clk_0.clk" end="MMBridge.clk" />
- <connection kind="clock" version="16.1" start="clk_0.clk" end="AvalonFIFO.clk_in" />
+ <connection kind="clock" version="18.0" start="clk_0.clk" end="IFFT.clk" />
+ <connection kind="clock" version="18.0" start="clk_0.clk" end="MMBridge.clk" />
+ <connection kind="clock" version="18.0" start="clk_0.clk" end="AvalonFIFO.clk_in" />
  <connection
    kind="clock"
-   version="16.1"
+   version="18.0"
    start="clk_0.clk"
    end="OFDMSymbolSync.clock" />
  <connection
    kind="clock"
-   version="16.1"
+   version="18.0"
    start="clk_0.clk"
    end="OFDMPrefixWipeer.clock" />
  <connection
    kind="clock"
-   version="16.1"
+   version="18.0"
    start="clk_0.clk"
    end="OFDMChannelEqualization.clock" />
  <connection
    kind="clock"
-   version="16.1"
+   version="18.0"
    start="clk_0.clk"
    end="QAMDemodulation.clock" />
  <connection
    kind="clock"
-   version="16.1"
+   version="18.0"
    start="clk_0.clk"
    end="hps_0.f2h_axi_clock" />
  <connection
    kind="clock"
-   version="16.1"
+   version="18.0"
    start="clk_0.clk"
    end="hps_0.f2h_sdram0_clock" />
  <connection
    kind="clock"
-   version="16.1"
+   version="18.0"
    start="clk_0.clk"
    end="hps_0.h2f_axi_clock" />
  <connection
    kind="clock"
-   version="16.1"
+   version="18.0"
    start="clk_0.clk"
    end="hps_0.h2f_lw_axi_clock" />
- <connection kind="clock" version="16.1" start="clk_0.clk" end="dc_fifo_0.out_clk" />
+ <connection kind="clock" version="18.0" start="clk_0.clk" end="dc_fifo_0.out_clk" />
  <connection
    kind="clock"
-   version="16.1"
+   version="18.0"
    start="clk_0.clk"
    end="PLLSampleClock.refclk" />
  <connection
    kind="clock"
-   version="16.1"
+   version="18.0"
    start="PLLSampleClock.outclk0"
    end="OFDMADCControl.clock_1" />
  <connection
    kind="clock"
-   version="16.1"
+   version="18.0"
    start="PLLSampleClock.outclk0"
    end="dc_fifo_0.in_clk" />
  <connection
+   kind="conduit"
+   version="18.0"
+   start="OFDMSymbolSync.sample_control"
+   end="OFDMADCControl.sample_control">
+  <parameter name="endPort" value="" />
+  <parameter name="endPortLSB" value="0" />
+  <parameter name="startPort" value="" />
+  <parameter name="startPortLSB" value="0" />
+  <parameter name="width" value="0" />
+ </connection>
+ <connection
    kind="reset"
-   version="16.1"
+   version="18.0"
    start="clk_0.clk_reset"
    end="dc_fifo_0.out_clk_reset" />
  <connection
    kind="reset"
-   version="16.1"
+   version="18.0"
    start="clk_0.clk_reset"
    end="OFDMPrefixWipeer.reset" />
  <connection
    kind="reset"
-   version="16.1"
+   version="18.0"
    start="clk_0.clk_reset"
    end="MMBridge.reset" />
  <connection
    kind="reset"
-   version="16.1"
+   version="18.0"
    start="clk_0.clk_reset"
    end="OFDMChannelEqualization.reset" />
  <connection
    kind="reset"
-   version="16.1"
+   version="18.0"
    start="clk_0.clk_reset"
    end="QAMDemodulation.reset" />
  <connection
    kind="reset"
-   version="16.1"
+   version="18.0"
    start="clk_0.clk_reset"
    end="OFDMADCControl.reset" />
  <connection
    kind="reset"
-   version="16.1"
+   version="18.0"
    start="clk_0.clk_reset"
    end="AvalonFIFO.reset_in" />
  <connection
    kind="reset"
-   version="16.1"
+   version="18.0"
    start="clk_0.clk_reset"
    end="OFDMSymbolSync.reset_sink" />
- <connection kind="reset" version="16.1" start="clk_0.clk_reset" end="IFFT.rst" />
+ <connection kind="reset" version="18.0" start="clk_0.clk_reset" end="IFFT.rst" />
  <connection
    kind="reset"
-   version="16.1"
+   version="18.0"
    start="OFDMSymbolSync.reset_source"
    end="dc_fifo_0.in_clk_reset" />
  <connection
    kind="reset"
-   version="16.1"
+   version="18.0"
    start="OFDMSymbolSync.reset_source"
    end="PLLSampleClock.reset" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />

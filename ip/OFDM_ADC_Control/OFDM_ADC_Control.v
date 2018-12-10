@@ -16,7 +16,7 @@ module OFDM_ADC_Control (
 		output wire        aso_out0_startofpacket, //         .startofpacket
 		input  wire        reset_reset,            //    reset.reset
 		input  wire        clock_clk,               //  clock_1.clk
-        input wire  [13:0] buffered_data,
+        input wire  [13:0] adc_data,
         input wire         pre_sampling
 	);
     assign aso_out0_valid<=1;

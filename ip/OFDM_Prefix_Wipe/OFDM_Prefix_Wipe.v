@@ -19,7 +19,7 @@ module OFDM_Prefix_Wipe (
     reg tInnerState;
     reg [15:0]tBitsCounter;
     reg tPacketState;
-    assign asi_in0_ready<=1;
+    assign asi_in0_ready=1;
 
     always @(posedge reset_reset or posedge clock_clk) begin
         if(reset_reset)begin
@@ -47,7 +47,8 @@ module OFDM_Prefix_Wipe (
                                 aso_out0_startofpacket<=1;
                                 tPacketState<=1;
                             end
-                            aso_out0_data<=asi_in0_data;
+                            aso_out0_data[32:1]<=asi_in0_data;
+                            aso_out0_data[0]<=0;
                         end
                     end
                     if(tBitsCounter>=1024)begin
