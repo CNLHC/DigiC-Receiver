@@ -1,10 +1,10 @@
-// (C) 2001-2016 Intel Corporation. All rights reserved.
+// (C) 2001-2018 Intel Corporation. All rights reserved.
 // Your use of Intel Corporation's design tools, logic functions and other 
 // software and tools, and its AMPP partner logic functions, and any output 
-// files any of the foregoing (including device programming or simulation 
+// files from any of the foregoing (including device programming or simulation 
 // files), and any associated documentation or information are expressly subject 
 // to the terms and conditions of the Intel Program License Subscription 
-// Agreement, Intel MegaCore Function License Agreement, or other applicable 
+// Agreement, Intel FPGA IP License Agreement, or other applicable 
 // license agreement, including, without limitation, that your use is for the 
 // sole purpose of programming logic devices manufactured by Intel and sold by 
 // Intel or its authorized distributors.  Please refer to the applicable 
@@ -24,10 +24,10 @@
 // agreement for further details.
 
 
-// $Id: //acds/rel/16.1/ip/merlin/altera_merlin_router/altera_merlin_router.sv.terp#1 $
+// $Id: //acds/rel/18.0std/ip/merlin/altera_merlin_router/altera_merlin_router.sv.terp#1 $
 // $Revision: #1 $
-// $Date: 2016/08/07 $
-// $Author: swbranch $
+// $Date: 2018/01/31 $
+// $Author: psgswbuild $
 
 // -------------------------------------------------------
 // Merlin Router
@@ -49,14 +49,14 @@ module ReceiverTopQsys_mm_interconnect_0_router_default_decode
                DEFAULT_RD_CHANNEL = -1,
                DEFAULT_DESTID = 0 
    )
-  (output [134 - 134 : 0] default_destination_id,
+  (output [87 - 87 : 0] default_destination_id,
    output [2-1 : 0] default_wr_channel,
    output [2-1 : 0] default_rd_channel,
    output [2-1 : 0] default_src_channel
   );
 
   assign default_destination_id = 
-    DEFAULT_DESTID[134 - 134 : 0];
+    DEFAULT_DESTID[87 - 87 : 0];
 
   generate
     if (DEFAULT_CHANNEL == -1) begin : no_default_channel_assignment
@@ -93,7 +93,7 @@ module ReceiverTopQsys_mm_interconnect_0_router
     // Command Sink (Input)
     // -------------------
     input                       sink_valid,
-    input  [159-1 : 0]    sink_data,
+    input  [112-1 : 0]    sink_data,
     input                       sink_startofpacket,
     input                       sink_endofpacket,
     output                      sink_ready,
@@ -102,7 +102,7 @@ module ReceiverTopQsys_mm_interconnect_0_router
     // Command Source (Output)
     // -------------------
     output                          src_valid,
-    output reg [159-1    : 0] src_data,
+    output reg [112-1    : 0] src_data,
     output reg [2-1 : 0] src_channel,
     output                          src_startofpacket,
     output                          src_endofpacket,
@@ -112,18 +112,18 @@ module ReceiverTopQsys_mm_interconnect_0_router
     // -------------------------------------------------------
     // Local parameters and variables
     // -------------------------------------------------------
-    localparam PKT_ADDR_H = 101;
-    localparam PKT_ADDR_L = 72;
-    localparam PKT_DEST_ID_H = 134;
-    localparam PKT_DEST_ID_L = 134;
-    localparam PKT_PROTECTION_H = 149;
-    localparam PKT_PROTECTION_L = 147;
-    localparam ST_DATA_W = 159;
+    localparam PKT_ADDR_H = 56;
+    localparam PKT_ADDR_L = 36;
+    localparam PKT_DEST_ID_H = 87;
+    localparam PKT_DEST_ID_L = 87;
+    localparam PKT_PROTECTION_H = 102;
+    localparam PKT_PROTECTION_L = 100;
+    localparam ST_DATA_W = 112;
     localparam ST_CHANNEL_W = 2;
     localparam DECODER_TYPE = 0;
 
-    localparam PKT_TRANS_WRITE = 104;
-    localparam PKT_TRANS_READ  = 105;
+    localparam PKT_TRANS_WRITE = 59;
+    localparam PKT_TRANS_READ  = 60;
 
     localparam PKT_ADDR_W = PKT_ADDR_H-PKT_ADDR_L + 1;
     localparam PKT_DEST_ID_W = PKT_DEST_ID_H-PKT_DEST_ID_L + 1;

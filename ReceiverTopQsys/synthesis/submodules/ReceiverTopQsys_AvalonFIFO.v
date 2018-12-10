@@ -661,7 +661,6 @@ reg              no_stop_write_d1;
 wire    [ 31: 0] q;
 wire             rdreq;
 wire             rdreq_driver;
-wire             ready_0;
 wire             ready_1;
 wire             ready_selector;
 wire             wrclk_control_slave_irq;
@@ -703,9 +702,8 @@ wire             wrreq;
   assign rdreq = rdreq_driver;
   assign data = avalonst_sink_data;
   assign wrreq = avalonst_sink_valid & no_stop_write_d1;
-  assign no_stop_write = (ready_selector & ready_1) | (!ready_selector & ready_0);
+  assign no_stop_write = ready_selector & ready_1;
   assign ready_1 = !full;
-  assign ready_0 = !full & !avalonst_sink_valid;
   assign ready_selector = level < 15;
   always @(posedge clock or negedge reset_n)
     begin
@@ -716,7 +714,7 @@ wire             wrreq;
     end
 
 
-  assign avalonst_sink_ready = no_stop_write & no_stop_write_d1;
+  assign avalonst_sink_ready = (reset_n == 0) ? 1'b0 : (no_stop_write & no_stop_write_d1);
   //the_scfifo_other_info, which is an e_instance
   ReceiverTopQsys_AvalonFIFO_single_clock_fifo_for_other_info the_scfifo_other_info
     (

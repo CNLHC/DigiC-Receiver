@@ -1,10 +1,10 @@
--- (C) 2001-2016 Intel Corporation. All rights reserved.
+-- (C) 2001-2018 Intel Corporation. All rights reserved.
 -- Your use of Intel Corporation's design tools, logic functions and other 
 -- software and tools, and its AMPP partner logic functions, and any output 
--- files any of the foregoing (including device programming or simulation 
+-- files from any of the foregoing (including device programming or simulation 
 -- files), and any associated documentation or information are expressly subject 
 -- to the terms and conditions of the Intel Program License Subscription 
--- Agreement, Intel MegaCore Function License Agreement, or other applicable 
+-- Agreement, Intel FPGA IP License Agreement, or other applicable 
 -- license agreement, including, without limitation, that your use is for the 
 -- sole purpose of programming logic devices manufactured by Intel and sold by 
 -- Intel or its authorized distributors.  Please refer to the applicable 
@@ -20,8 +20,8 @@
 -- $Source: /cvs/uksw/dsp_cores/lib/fu/roundsat/rtl/auk_dspip_roundsat.vhd,v $
 --
 -- $Revision: #1 $
--- $Date: 2016/08/07 $
--- Check in by     : $Author: swbranch $
+-- $Date: 2018/01/31 $
+-- Check in by     : $Author: psgswbuild $
 -- Author   :  Volker Mauer
 --
 -- Project      :  common FU library
@@ -70,7 +70,7 @@ begin  -- architecture beh
     trunc_low_p: process (clk) is
     begin  -- process trunc_low_p
       if rising_edge(clk) then         -- rising clock edge
-        if reset = '1' then                 -- synchronous reset (active high)
+        if reset = '1' then                 -- asynchronous reset (active high)
           dataout <= (others => '0');
         else
           if enable = '1' then
@@ -89,7 +89,7 @@ begin  -- architecture beh
     trunc_high_p: process (clk) is
     begin  -- process trunc_high_p
       if rising_edge(clk) then         -- rising clock edge
-        if reset = '1' then                 -- synchronous reset (active high)
+        if reset = '1' then                 -- asynchronous reset (active high)
           dataout <= (others => '0');
         else
           if enable = '1' then
@@ -133,7 +133,7 @@ begin  -- architecture beh
     satsym_p : process (clk) is
     begin  -- process satsym_p
       if rising_edge(clk) then       -- rising clock edge
-        if reset = '1' then               -- synchronous reset (active high)
+        if reset = '1' then               -- asynchronous reset (active high)
           dataout   <= (others => '0');
         else
           if enable = '1' then         
@@ -166,7 +166,7 @@ begin  -- architecture beh
     round_p : process (clk) is
     begin  -- process round_p
       if rising_edge(clk) then       -- rising clock edge
-        if reset = '1' then               -- synchronous reset (active high)
+        if reset = '1' then               -- asynchronous reset (active high)
           dataout   <= (others => '0');
         else
           if enable = '1' then          
@@ -194,7 +194,7 @@ begin  -- architecture beh
       variable OR_accu : std_logic := '0';
     begin  -- process round0_p
       if rising_edge(clk) then       -- rising clock edge
-        if reset = '1' then               -- synchronous reset (active high)
+        if reset = '1' then               -- asynchronous reset (active high)
           dataout   <= (others => '0');
         else
           if enable = '1' then
@@ -232,7 +232,7 @@ begin  -- architecture beh
       variable OR_accu : std_logic := '0';
     begin  -- process round_up_sym_p
       if rising_edge(clk) then       -- rising clock edge
-        if reset = '1' then               -- synchronous reset (active high)
+        if reset = '1' then               -- asynchronous reset (active high)
           dataout_temp   <= (others => '0');
           SB_delayed <= '0';
         else
@@ -277,7 +277,7 @@ begin  -- architecture beh
        variable OR_accu : std_logic := '0';
     begin  -- process conv_round_p
       if rising_edge(clk) then       -- rising clock edge
-        if reset = '1' then               -- synchronous reset (active high)
+        if reset = '1' then               -- asynchronous reset (active high)
           dataout     <= (others => '0');
         else
           if enable = '1' then
@@ -313,7 +313,7 @@ begin  -- architecture beh
     variable OR_Temp : std_logic := '0';
     begin
       if rising_edge(clk) then       -- rising clock edge
-        if reset = '1' then               -- synchronous reset (active high)
+        if reset = '1' then               -- asynchronous reset (active high)
            RB  <= '0';
            LSB <= '0';
            OR_accu <= '0';
@@ -336,7 +336,7 @@ begin  -- architecture beh
     conv_round_p2 : process (clk) is
     begin  -- process conv_round_p
       if rising_edge(clk) then       -- rising clock edge
-        if reset = '1' then               -- synchronous reset (active high)
+        if reset = '1' then               -- asynchronous reset (active high)
           dataout     <= (others => '0');
         else
           if enable = '1' then
@@ -369,7 +369,7 @@ conv_round_3 : if ROUNDING_TYPE_g = "CONV_ROUND" and LATENCY = 3 generate
     variable OR_Temp_2,OR_Temp_1 : std_logic := '0';
     begin
       if rising_edge(clk) then       -- rising clock edge
-        if reset = '1' then               -- synchronous reset (active high)
+        if reset = '1' then               -- asynchronous reset (active high)
            RB  <= '0';
            LSB <= '0';
            RB_R  <= '0';
@@ -404,7 +404,7 @@ conv_round_3 : if ROUNDING_TYPE_g = "CONV_ROUND" and LATENCY = 3 generate
     conv_round_p2 : process (clk) is
     begin  -- process conv_round_p
       if rising_edge(clk) then       -- rising clock edge
-        if reset = '1' then               -- synchronous reset (active high)
+        if reset = '1' then               -- asynchronous reset (active high)
           dataout     <= (others => '0');
         else
           if enable = '1' then

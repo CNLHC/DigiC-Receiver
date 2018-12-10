@@ -1,10 +1,10 @@
-// (C) 2001-2016 Intel Corporation. All rights reserved.
+// (C) 2001-2018 Intel Corporation. All rights reserved.
 // Your use of Intel Corporation's design tools, logic functions and other 
 // software and tools, and its AMPP partner logic functions, and any output 
-// files any of the foregoing (including device programming or simulation 
+// files from any of the foregoing (including device programming or simulation 
 // files), and any associated documentation or information are expressly subject 
 // to the terms and conditions of the Intel Program License Subscription 
-// Agreement, Intel MegaCore Function License Agreement, or other applicable 
+// Agreement, Intel FPGA IP License Agreement, or other applicable 
 // license agreement, including, without limitation, that your use is for the 
 // sole purpose of programming logic devices manufactured by Intel and sold by 
 // Intel or its authorized distributors.  Please refer to the applicable 
@@ -14,7 +14,7 @@
 
 `timescale 1 ps / 1 ps
 
-(* altera_attribute = "-name IP_TOOL_NAME altera_mem_if_ddr3_hard_phy_core; -name IP_TOOL_VERSION 16.1; -name FITTER_ADJUST_HC_SHORT_PATH_GUARDBAND 100" *)
+(* altera_attribute = "-name IP_TOOL_NAME altera_mem_if_ddr3_hard_phy_core; -name IP_TOOL_VERSION 18.0; -name FITTER_ADJUST_HC_SHORT_PATH_GUARDBAND 100" *)
 module hps_sdram_p0 (
     global_reset_n,
     soft_reset_n,
@@ -164,17 +164,17 @@ parameter OCT_TERM_CONTROL_WIDTH   = 16;
 
 // PHY-Memory Interface
 // Memory device specific parameters, they are set according to the memory spec.
-parameter MEM_IF_ADDR_WIDTH			= 13;
+parameter MEM_IF_ADDR_WIDTH			= 15;
 parameter MEM_IF_BANKADDR_WIDTH     = 3;
 parameter MEM_IF_CK_WIDTH			= 1;
 parameter MEM_IF_CLK_EN_WIDTH		= 1;
 parameter MEM_IF_CS_WIDTH			= 1;
-parameter MEM_IF_DM_WIDTH         	= 1;
+parameter MEM_IF_DM_WIDTH         	= 4;
 parameter MEM_IF_CONTROL_WIDTH    	= 1; 
-parameter MEM_IF_DQ_WIDTH         	= 8;
-parameter MEM_IF_DQS_WIDTH         	= 1;
-parameter MEM_IF_READ_DQS_WIDTH    	= 1;
-parameter MEM_IF_WRITE_DQS_WIDTH   	= 1;
+parameter MEM_IF_DQ_WIDTH         	= 32;
+parameter MEM_IF_DQS_WIDTH         	= 4;
+parameter MEM_IF_READ_DQS_WIDTH    	= 4;
+parameter MEM_IF_WRITE_DQS_WIDTH   	= 4;
 parameter MEM_IF_ODT_WIDTH         	= 1;
 
 
@@ -202,10 +202,10 @@ parameter CALIB_REG_WIDTH = 8;
 
 
 parameter TB_PROTOCOL       = "DDR3";
-parameter TB_MEM_CLK_FREQ   = "300.0";
+parameter TB_MEM_CLK_FREQ   = "400.0";
 parameter TB_RATE           = "FULL";
-parameter TB_MEM_DQ_WIDTH   = "8";
-parameter TB_MEM_DQS_WIDTH  = "1";
+parameter TB_MEM_DQ_WIDTH   = "32";
+parameter TB_MEM_DQS_WIDTH  = "4";
 parameter TB_PLL_DLL_MASTER = "true";
 
 parameter FAST_SIM_CALIBRATION = "false";

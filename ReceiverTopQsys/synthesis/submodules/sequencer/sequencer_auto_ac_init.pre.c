@@ -1,5 +1,5 @@
 /*
-Copyright (C) 2016  Intel Corporation. All rights reserved.
+Copyright (C) 2018  Intel Corporation. All rights reserved.
 
 SPDX-License-Identifier:    BSD-3-Clause
 
@@ -33,16 +33,16 @@ const alt_u32 ac_rom_init[36] =
 {
 	0x20700000,
 	0x20780000,
-	0x10080231,
-	0x10080330,
+	0x10080471,
+	0x10080570,
 	0x10090000,
-	0x100a0008,
+	0x100a0010,
 	0x100b0000,
 	0x10380400,
-	0x10080249,
-	0x100802c8,
+	0x10080469,
+	0x100804e8,
 	0x100a0000,
-	0x10090010,
+	0x10090008,
 	0x100b0000,
 	0x30780000,
 	0x38780000,
