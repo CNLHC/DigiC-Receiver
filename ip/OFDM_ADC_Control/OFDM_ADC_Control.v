@@ -42,18 +42,19 @@ module OFDM_ADC_Control (
             else begin
                 if(aso_out0_startofpacket)
                     aso_out0_startofpacket<=0;
-                if(aso_out0_endofpacket)
+                if(aso_out0_endofpacket)begin
                     aso_out0_endofpacket<=0;
+                    aso_out0_valid<=0;
+                end
                 if(!tPacketingState)begin
                     tPacketingState<=1;
                     aso_out0_startofpacket<=1;
                 end
-
                 aso_out0_valid<=1;
                 aso_out0_data[31:18]<=adc_data_Real;
                 aso_out0_data[17:4]<=adc_data_Imag;
                 tSymbolCounter<=tSymbolCounter+1;
-                if(tSymbolCounter>=1279)begin
+                if(tSymbolCounter>=1278)begin
                     aso_out0_endofpacket<=1;
                 end
             end
