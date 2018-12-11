@@ -10,14 +10,15 @@ module OFDM_Prefix_Wipe (
 		input  wire        asi_in0_endofpacket,      
 		input  wire        asi_in0_startofpacket,    
         //Avalon Source
-		output reg  [32:0] aso_out0_data,            
+		output reg  [28:0] aso_out0_data,            
 		input  wire        aso_out0_ready,           
 		output reg         aso_out0_valid,           
 		output reg         aso_out0_startofpacket, 
-		output reg         aso_out0_endofpacket
+		output reg         aso_out0_endofpacket,
+        output reg  [1:0]  aso_out0_error
     );
     reg tInnerState;
-    reg [15:0]tBitsCounter;
+    reg [15:0]tBytesCounter;
     reg tPacketState;
     assign asi_in0_ready=1;
 
@@ -32,29 +33,37 @@ module OFDM_Prefix_Wipe (
                 0:begin//IDLE
                     tPacketState<=0;
                     aso_out0_endofpacket<=0;
-                    tBitsCounter<=0;
                     if(asi_in0_startofpacket)
                         tInnerState<=1;
+                    if(asi_in0_valid)
+                        tBytesCounter<=tBytesCounter+1;
+                    else
+                        tBytesCounter<=0;
                 end
                 1:begin //Packeting
-                    aso_out0_valid<=1;
+                    aso_out0_valid<=0;
                     if(aso_out0_startofpacket)
                         aso_out0_startofpacket<=0;
+                    if(aso_out0_endofpacket)begin
+                        if(!asi_in0_endofpacket)
+                            aso_out0_error<=2'b01;
+                        aso_out0_endofpacket<=0;
+                        aso_out0_valid<=0;
+                    end
                     if(asi_in0_valid)begin
-                        tBitsCounter<=tBitsCounter+32;
-                        if (tBitsCounter>=256)begin
+                        tBytesCounter<=tBytesCounter+1;
+                        if (tBytesCounter>=255)begin
                             if(!tPacketState)begin
                                 aso_out0_startofpacket<=1;
                                 tPacketState<=1;
                             end
-                            aso_out0_data[32:1]<=asi_in0_data;
+                            aso_out0_data[28:1]<=asi_in0_data[31:4];
                             aso_out0_data[0]<=0;
+                            aso_out0_valid<=1;
                         end
-                    end
-                    if(tBitsCounter>=1024)begin
-                        tInnerState<=0;
-                        aso_out0_valid<=0;
-                        aso_out0_endofpacket<=1;
+                        if(tBytesCounter>=1278)begin
+                            aso_out0_endofpacket<=1;
+                        end
                     end
                 end
             endcase

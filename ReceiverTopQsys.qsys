@@ -186,6 +186,22 @@
          type = "String";
       }
    }
+   element ReceiverTopQsys
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone V";
+         type = "String";
+      }
+   }
+   element ReceiverTopQsys
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone V";
+         type = "String";
+      }
+   }
    element clk_0
    {
       datum _sortIndex
@@ -323,13 +339,13 @@
   <parameter name="hard_fp" value="false" />
   <parameter name="hyper_opt" value="false" />
   <parameter name="in_order" value="Natural" />
-  <parameter name="in_width" value="16" />
+  <parameter name="in_width" value="14" />
   <parameter name="length" value="1024" />
   <parameter name="num_engines" value="1" />
   <parameter name="out_order" value="Natural" />
   <parameter name="out_width" value="29" />
   <parameter name="selected_device_family" value="Cyclone V" />
-  <parameter name="twid_width" value="16" />
+  <parameter name="twid_width" value="14" />
  </module>
  <module
    name="MMBridge"
@@ -588,12 +604,12 @@
    kind="altera_avalon_dc_fifo"
    version="18.0"
    enabled="1">
-  <parameter name="BITS_PER_SYMBOL" value="8" />
+  <parameter name="BITS_PER_SYMBOL" value="32" />
   <parameter name="CHANNEL_WIDTH" value="0" />
   <parameter name="ENABLE_EXPLICIT_MAXCHANNEL" value="false" />
   <parameter name="ERROR_WIDTH" value="0" />
   <parameter name="EXPLICIT_MAXCHANNEL" value="0" />
-  <parameter name="FIFO_DEPTH" value="16" />
+  <parameter name="FIFO_DEPTH" value="1024" />
   <parameter name="RD_SYNC_DEPTH" value="3" />
   <parameter name="SYMBOLS_PER_BEAT" value="1" />
   <parameter name="USE_IN_FILL_LEVEL" value="0" />

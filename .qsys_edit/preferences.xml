@@ -9,6 +9,6 @@
    <description preferredWidth="416" />
   </columns>
  </systemtable>
- <library expandedCategories="Project/DigiC,Library,Project/DigiC/OFDM,Project" />
- <window width="1938" height="1060" x="-9" y="-9" />
+ <library expandedCategories="Library,Project/DigiC,Project/DigiC/OFDM,Project" />
+ <window width="1920" height="1042" x="0" y="0" />
 </preferences>

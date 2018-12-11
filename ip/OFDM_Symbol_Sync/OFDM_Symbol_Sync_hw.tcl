@@ -113,7 +113,7 @@ add_interface_port aso_out0 aso_out0_startofpacket startofpacket Output 1
 add_interface asi_in_0 avalon_streaming end
 set_interface_property asi_in_0 associatedClock clock
 set_interface_property asi_in_0 associatedReset reset_sink
-set_interface_property asi_in_0 dataBitsPerSymbol 8
+set_interface_property asi_in_0 dataBitsPerSymbol 32
 set_interface_property asi_in_0 errorDescriptor ""
 set_interface_property asi_in_0 firstSymbolInHighOrderBits true
 set_interface_property asi_in_0 maxChannel 0
@@ -142,7 +142,7 @@ set_interface_property reset_sink PORT_NAME_MAP ""
 set_interface_property reset_sink CMSIS_SVD_VARIABLES ""
 set_interface_property reset_sink SVD_ADDRESS_GROUP ""
 
-add_interface_port reset reset_reset reset Input 1
+add_interface_port reset_sink reset_reset reset Input 1
 
 # 
 # connection point sample_control
