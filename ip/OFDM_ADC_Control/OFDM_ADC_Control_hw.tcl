@@ -59,7 +59,7 @@ add_fileset_file OFDM_ADC_Control.v VERILOG PATH OFDM_ADC_Control.v TOP_LEVEL_FI
 add_interface aso_out0 avalon_streaming start
 set_interface_property aso_out0 associatedClock clock_1
 set_interface_property aso_out0 associatedReset reset
-set_interface_property aso_out0 dataBitsPerSymbol 8
+set_interface_property aso_out0 dataBitsPerSymbol 32
 set_interface_property aso_out0 errorDescriptor ""
 set_interface_property aso_out0 firstSymbolInHighOrderBits true
 set_interface_property aso_out0 maxChannel 0
@@ -74,7 +74,6 @@ add_interface_port aso_out0 aso_out0_data data Output 32
 add_interface_port aso_out0 aso_out0_valid valid Output 1
 add_interface_port aso_out0 aso_out0_endofpacket endofpacket Output 1
 add_interface_port aso_out0 aso_out0_startofpacket startofpacket Output 1
-add_interface_port aso_out0 aso_out0_empty empty Output 1
 
 
 # 
@@ -132,4 +131,5 @@ set_interface_property external_adc PORT_NAME_MAP ""
 set_interface_property external_adc CMSIS_SVD_VARIABLES ""
 set_interface_property external_adc SVD_ADDRESS_GROUP ""
 
-add_interface_port external_adc adc_data data Input 14
+add_interface_port external_adc adc_data_Real RealData Input 14
+add_interface_port external_adc adc_data_Imag ImagData Input 14
