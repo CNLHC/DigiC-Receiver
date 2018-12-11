@@ -1,38 +1,63 @@
 // OFDM_Symbol_Sync.v
 
-// This file was auto-generated as a prototype implementation of a module
-// created in component editor.  It ties off all outputs to ground and
-// ignores all inputs.  It needs to be edited to make it do something
-// useful.
-// 
-// This file will not be automatically regenerated.  You should check it in
-// to your version control system if you want to keep it.
 
+`define SYMBOL_DECISION_THRESHOLD 14'h1fff
 `timescale 1 ps / 1 ps
 module OFDM_Symbol_Sync (
-		input  wire        clock_clk,      //        clock.clk
-		output wire        reset_reset,    // reset_source.reset
+        //Clock and Reset 
+		output wire        sample_clock_reset, //   reset_source.reset
+		input  wire        clock_clk,             //          clock.clk
+        input  wire        reset_reset,
 
-		input  wire [31:0] asi_in0_data,   //      asi_in0.data
-		output wire        asi_in0_ready,  //             .ready
-		input  wire        asi_in0_valid,  //             .valid
-        input wire         asi_in0_startofpacket,
-        input wire         asi_in0_endofpacket,
-        input wire         asi_in0_empty,
+        //Avalon Sink
+		input  wire [31:0] asi_in0_data,           //       asi_in_0.data
+		input  wire        asi_in0_valid,          //               .valid
+		input  wire        asi_in0_endofpacket,    //               .endofpacket
+		input  wire        asi_in0_startofpacket,  //               .startofpacket
 
-		output wire [31:0] aso_out0_data,  //     aso_out0.data
-		input  wire        aso_out0_ready, //             .ready
-		output wire        aso_out0_valid  //             .valid
+        //Avalon Source
+		output wire [31:0] aso_out0_data,          //       aso_out0.data
+		output reg         aso_out0_valid,         //               .valid
+		output reg         aso_out0_endofpacket,   //               .endofpacket
+		output reg         aso_out0_startofpacket, //               .startofpacket
+
+        //Feedback Control Signal
+		output  reg        pre_sampling            // sample_control.pre_sample_control
 	);
-
-	// TODO: Auto-generated HDL template
-
-	assign reset_reset = 1'b0;
-
-	assign asi_in0_ready = 1'b0;
-
-	assign aso_out0_valid = 1'b0;
-
-	assign aso_out0_data = 32'b00000000000000000000000000000000;
-
+    wire signed [13:0]tRealData;
+    wire signed [13:0]tImagData;
+    assign tRealData=asi_in0_data[31:18];
+    assign tImagData=asi_in0_data[17:4];
+    always @ (posedge clock_clk or posedge reset_reset)begin
+        if(reset_reset)begin
+            pre_sampling<=1;
+            sample_clock_reset<=1;
+        end
+        else begin
+            if(!sample_clock_reset)
+                sample_clock_reset<=1;
+            if(pre_sampling)begin
+                if(asi_in0_valid)begin
+                    if(tRealData>`SYMBOL_DECISION_THRESHOLD && tImagData<`SYMBOL_DECISION_THRESHOLD)begin
+                        pre_sampling<=0;
+                        sample_clock_reset<=0;
+                    end
+                end
+            end
+            else begin
+                if(asi_in0_startofpacket)
+                    aso_out0_startofpacket<=1; 
+                if(asi_in0_endofpacket)begin
+                    aso_out0_endofpacket<=1;
+                    pre_sampling<=1;
+                end
+                if(aso_out0_endofpacket)
+                    aso_out0_endofpacket<=0;
+                if(aso_out0_startofpacket)
+                    aso_out0_startofpacket<=0;
+                aso_out0_data<=asi_in0_data;
+                aso_out0_valid<=asi_in0_valid;
+            end
+        end
+    end
 endmodule
